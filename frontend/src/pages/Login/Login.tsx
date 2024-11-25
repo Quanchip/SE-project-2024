@@ -36,7 +36,7 @@ const Login: FC = (): ReactElement => {
         return () => {
             dispatch(resetAuthState());
         };
-    }, []);
+    }, [dispatch, params.code]);
 
     const onClickSignIn = (userData: { email: ""; password: "" }): void => {
         dispatch(login({ userData, history }));

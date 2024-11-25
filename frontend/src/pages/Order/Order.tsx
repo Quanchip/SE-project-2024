@@ -16,7 +16,7 @@ import { addOrder } from "../../redux-toolkit/order/order-thunks";
 import {resetCartState} from "../../redux-toolkit/cart/cart-slice";
 import {fetchCart} from "../../redux-toolkit/cart/cart-thunks";
 import OrderItem from "./OrderItem/OrderItem";
-import axios, {AxiosPromise} from "axios";
+
 
 interface OrderFormData {
     firstName: string;
@@ -55,7 +55,7 @@ const Order: FC = (): ReactElement => {
             dispatch(resetOrderState());
             dispatch(resetCartState());
         };
-    }, []);
+    }, [dispatch, form, usersData]);
 
     // const onFormSubmit = (order: OrderFormData): void => {
     //     const perfumesId = Object.fromEntries(new Map(JSON.parse(localStorage.getItem("perfumes") as string)));

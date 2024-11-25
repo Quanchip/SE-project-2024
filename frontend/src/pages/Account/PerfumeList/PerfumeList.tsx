@@ -37,7 +37,7 @@ const PerfumeList: FC = (): ReactElement => {
             dispatch(resetPerfumesState());
             dispatch(resetAdminState(LoadingStatus.LOADING));
         };
-    }, []);
+    }, [dispatch]);
 
     useEffect(() => {
         if (isPerfumeDeleted) {

@@ -19,13 +19,13 @@ const ChangePassword: FC = (): ReactElement => {
 
     useEffect(() => {
         dispatch(resetInputForm());
-    }, []);
+    }, [dispatch]);
 
     useEffect(() => {
         if (successMessage) {
             form.resetFields();
         }
-    }, [successMessage]);
+    }, [successMessage, form]);
 
     const onFormSubmit = (data: { password: string; password2: string }): void => {
         dispatch(updateUserPassword({ ...data }));

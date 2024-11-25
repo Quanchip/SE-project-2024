@@ -45,7 +45,7 @@ export const ordersByQuery = `
 
 export const ordersByEmailQuery = (email: string | undefined) => `
     {
-        ordersByEmail(email: \"${email}\") {
+        ordersByEmail(email: "${email}") {
             id
             totalPrice
             date

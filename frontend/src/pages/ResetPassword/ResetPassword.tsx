@@ -27,7 +27,7 @@ const ResetPassword: FC = (): ReactElement => {
         if (params.code) {
             dispatch(fetchResetPasswordCode(params.code));
         }
-    }, []);
+    }, [dispatch, params.code]);
 
     const onClickReset = (data: { password: ""; password2: "" }): void => {
         const userResetPasswordData = { email: userEmail, ...data };

@@ -33,13 +33,13 @@ const ManageUserOrder: FC = (): ReactElement => {
         return () => {
             dispatch(resetOrderState());
         };
-    }, []);
+    }, [dispatch, params.id]);
 
     useEffect(() => {
         if (isOrderLoaded) {
             dispatch(fetchOrderItemsByOrderId(params.id));
         }
-    }, [isOrderLoaded]);
+    }, [isOrderLoaded, dispatch, params.id]);
 
     return (
         <>

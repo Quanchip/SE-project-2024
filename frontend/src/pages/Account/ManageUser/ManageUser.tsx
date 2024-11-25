@@ -34,13 +34,13 @@ const ManageUser: FC = (): ReactElement => {
             dispatch(resetOrders());
             dispatch(resetAdminState(LoadingStatus.LOADING));
         };
-    }, []);
+    }, [dispatch, params.id]);
 
     useEffect(() => {
         if (userData.email) {
             dispatch(fetchUserOrdersByEmail({ email: userData.email!, page: 0 }));
         }
-    }, [userData]);
+    }, [userData, dispatch]);
 
     return (
         <>

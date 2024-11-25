@@ -1,0 +1,42 @@
+services:
+  frontend:
+    image: front-image:1.0
+    ports:
+      - "3000:3000"
+    depends_on:
+      - backend
+    networks:
+      - app-network
+
+  backend:
+    image: backend-image:2.0
+    ports:
+      - "8080:8080"
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://db:5432/quanchip
+      - SPRING_DATASOURCE_USERNAME=quanchip
+      - SPRING_DATASOURCE_PASSWORD=123
+      - HOSTNAME=192.168.3.129:3000
+    depends_on:
+      - db
+    networks:
+      - app-network
+
+  db:
+    image: postgres:13
+    ports:
+      - "5432:5432"
+    environment:
+      - POSTGRES_DB=quanchip
+      - POSTGRES_USER=quanchip
+      - POSTGRES_PASSWORD=123
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    networks:
+      - app-network
+
+volumes:
+  postgres_data:
+  
+networks:
+  app-network:

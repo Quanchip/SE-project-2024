@@ -29,7 +29,7 @@ const UsersList: FC = (): ReactElement => {
         return () => {
             dispatch(resetAdminState(LoadingStatus.LOADING));
         };
-    }, []);
+    }, [dispatch]);
 
     return (
         <div>

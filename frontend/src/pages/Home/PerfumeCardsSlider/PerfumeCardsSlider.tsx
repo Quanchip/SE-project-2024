@@ -22,7 +22,7 @@ const PerfumeCardsSlider: FC = (): ReactElement => {
         return () => {
             dispatch(resetPerfumesState());
         };
-    }, []);
+    }, [dispatch]);
 
     return (
         <div className={"perfume-cards-slider"}>

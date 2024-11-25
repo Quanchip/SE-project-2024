@@ -40,7 +40,7 @@ const Cart: FC = (): ReactElement => {
         return () => {
             dispatch(resetCartState());
         };
-    }, []);
+    }, [dispatch, perfumeInCart]);
 
     const deleteFromCart = (perfumeId: number): void => {
         perfumeInCart.delete(perfumeId);

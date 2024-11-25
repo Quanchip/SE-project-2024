@@ -55,7 +55,7 @@ export const { calculateCartPrice, removePerfumeById, setCartItemsCount, resetCa
 export default cartSlice.reducer;
 
 const calculatePrice = (perfumes: Array<PerfumeResponse>): number => {
-    const perfumesFromLocalStorage: Map<number, number> = new Map(JSON.parse(<string>localStorage.getItem("perfumes")));
+    const perfumesFromLocalStorage: Map<number, number> = new Map(JSON.parse(localStorage.getItem("perfumes") as string));
     let total = 0;
 
     perfumesFromLocalStorage.forEach((value, key) => {

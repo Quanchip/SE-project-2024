@@ -41,7 +41,7 @@ const Account: FC = (): ReactElement => {
     useEffect(() => {
         dispatch(resetAuthState());
         dispatch(fetchUserInfo());
-    }, []);
+    }, [dispatch]);
 
     useEffect(() => {
         if (usersData) {

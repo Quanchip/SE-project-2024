@@ -51,7 +51,7 @@ const App: FC = (): ReactElement => {
         if (localStorage.getItem("token")) {
             dispatch(fetchUserInfo());
         }
-    }, []);
+    }, [dispatch]);
 
     return (
         <>

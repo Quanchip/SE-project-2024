@@ -20,7 +20,7 @@ interface PersonalData {
     postIndex: string;
 }
 
-const PersonalData: FC = (): ReactElement => {
+const PersonalDataComponent: FC = (): ReactElement => {
     const dispatch = useDispatch();
     const [form] = Form.useForm();
     const usersData = useSelector(selectUserFromUserState);
@@ -38,7 +38,7 @@ const PersonalData: FC = (): ReactElement => {
         if (usersData) {
             form.setFieldsValue(usersData);
         }
-    }, []);
+    }, [dispatch, form, usersData]);
 
     const onFormSubmit = (data: PersonalData): void => {
         dispatch(updateUserInfo({ id: usersData?.id, ...data }));
@@ -120,4 +120,4 @@ const PersonalData: FC = (): ReactElement => {
     );
 };
 
-export default PersonalData;
+export default PersonalDataComponent;

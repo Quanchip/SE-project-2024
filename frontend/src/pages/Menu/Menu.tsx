@@ -70,11 +70,11 @@ const Menu: FC = (): ReactElement => {
         return () => {
             dispatch(resetPerfumesState());
         };
-    }, []);
+    }, [dispatch, filterParams, location.state.id, sortByPrice]);
 
     useEffect(() => {
         resetPagination();
-    }, [filterParams, sortByPrice]);
+    }, [filterParams, sortByPrice, resetPagination]);
 
     const onChangeCheckbox = (checkedValues: CheckboxValueType[], category: CheckboxCategoryFilter): void => {
         if (CheckboxCategoryFilter.PERFUMERS === category) {

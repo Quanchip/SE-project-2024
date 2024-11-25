@@ -52,13 +52,13 @@ const EditPerfume: FC = (): ReactElement => {
         return () => {
             dispatch(resetAdminState(LoadingStatus.LOADING));
         };
-    }, []);
+    }, [dispatch, params.id]);
     
     useEffect(() => {
         if (perfumeData) {
             form.setFieldsValue(perfumeData);
         }
-    }, [perfumeData])
+    }, [perfumeData, form])
 
     useEffect(() => {
         if (isPerfumeEdited) {
@@ -69,7 +69,7 @@ const EditPerfume: FC = (): ReactElement => {
             });
             dispatch(resetAdminState(LoadingStatus.SUCCESS));
         }
-    }, [isPerfumeEdited]);
+    }, [isPerfumeEdited, dispatch]);
 
     const onFormSubmit = (data: EditPerfumeData): void => {
         const bodyFormData: FormData = new FormData();

@@ -1,4 +1,4 @@
-import React from "react";
+
 import axios, { Method } from "axios";
 
 import { API_BASE_URL } from "../constants/urlConstants";
@@ -38,5 +38,5 @@ const setHeader = (isAuthRequired: boolean, contentType: string) => {
     }
     axios.defaults.headers.common["Content-Type"] = contentType;
 };
-
-export default new RequestService();
+const requestService = new RequestService();
+export default requestService;

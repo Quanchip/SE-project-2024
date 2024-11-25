@@ -66,17 +66,17 @@ const Product: FC = (): ReactElement => {
             stompClient?.disconnect();
             dispatch(resetPerfumeState());
         };
-    }, []);
+    }, [dispatch, params.id]);
 
     useEffect(() => {
         if (isPerfumeLoaded) {
             dispatch(fetchReviewsByPerfumeId(params.id));
         }
-    }, [isPerfumeLoaded]);
+    }, [isPerfumeLoaded, dispatch, params.id]);
 
     useEffect(() => {
         form.resetFields();
-    }, [isReviewAdded]);
+    }, [isReviewAdded, form]);
 
     const addReview = (data: ReviewData): void => {
         dispatch(addReviewToPerfume({ perfumeId: params.id, ...data }));

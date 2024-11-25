@@ -25,7 +25,14 @@ export const initialState: AuthState = {
     loadingState: LoadingStatus.LOADING,
     success: "",
     error: "",
-    errors: {}
+    errors: {
+        emailError: undefined,
+        firstNameError: undefined,
+        lastNameError: undefined,
+        passwordError: undefined,
+        password2Error: undefined,
+        // captchaError: undefined,
+    }
 };
 
 export const authSlice = createSlice({
@@ -51,7 +58,7 @@ export const authSlice = createSlice({
             state.errors = {};
         });
         builder.addCase(registration.rejected, (state, action) => {
-            state.errors = action.payload!;
+            state.errors = action.payload! || initialState.errors;
             state.loadingState = LoadingStatus.LOADED;
         });
         builder.addCase(activateAccount.fulfilled, (state, action) => {

@@ -20,7 +20,7 @@ const PersonalOrdersList: FC = (): ReactElement => {
         return () => {
             dispatch(resetOrders());
         };
-    }, []);
+    }, [dispatch]);
 
     return (
         <>

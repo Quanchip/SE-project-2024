@@ -44,7 +44,7 @@ const AddPerfume: FC = (): ReactElement => {
         return () => {
             dispatch(resetAdminState(LoadingStatus.LOADING));
         };
-    }, []);
+    }, [dispatch]);
 
     useEffect(() => {
         if (isPerfumeAdded) {
@@ -55,7 +55,7 @@ const AddPerfume: FC = (): ReactElement => {
             });
             dispatch(resetAdminState(LoadingStatus.SUCCESS));
         }
-    }, [isPerfumeAdded]);
+    }, [isPerfumeAdded, dispatch]);
 
     const onFormSubmit = (data: AddPerfumeData): void => {
         const bodyFormData: FormData = new FormData();

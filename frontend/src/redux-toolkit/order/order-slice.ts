@@ -2,7 +2,6 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 import { LoadingStatus, OrderResponse, OrderError, OrderItemResponse } from "../../types/types";
 import { addOrder, fetchOrderById, fetchOrderItemsByOrderId } from "./order-thunks";
-import Order from "../../pages/Order/Order";
 
 export interface OrderState {
     orderResponse: Partial<OrderResponse>;

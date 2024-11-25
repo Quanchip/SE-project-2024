@@ -12,7 +12,7 @@ const OrderFinalize: FC = (): ReactElement => {
 
     useEffect(() => {
         dispatch(resetCartState());
-    }, []);
+    }, [dispatch]);
 
     return (
         <ContentWrapper>

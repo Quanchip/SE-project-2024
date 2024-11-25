@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import ReCAPTCHA from "react-google-recaptcha";
 import { LockOutlined, MailOutlined, UserAddOutlined, UserOutlined } from "@ant-design/icons";
 
+
 import { selectErrors, selectIsAuthLoading, selectIsRegistered } from "../../redux-toolkit/auth/auth-selector";
 import ContentWrapper from "../../components/ContentWrapper/ContentWrapper";
 import ContentTitle from "../../components/ContentTitle/ContentTitle";
@@ -17,8 +18,8 @@ const Registration: FC = (): ReactElement => {
     const dispatch = useDispatch();
     const isRegistered = useSelector(selectIsRegistered);
     const isLoading = useSelector(selectIsAuthLoading);
-    const errors = useSelector(selectErrors);
-    const [captchaValue, setCaptchaValue] = useState<string | null>("");
+    const errors = useSelector(selectErrors) || {};
+    // const [captchaValue, setCaptchaValue] = useState<string | null>("");
 
     useEffect(() => {
         window.scrollTo(0, 0);
@@ -27,20 +28,21 @@ const Registration: FC = (): ReactElement => {
         return () => {
             dispatch(resetAuthState());
         };
-    }, []);
+    }, [dispatch]);
 
     useEffect(() => {
-        setCaptchaValue("");
+        // setCaptchaValue("");
     }, [isRegistered]);
 
-    const onChangeRecaptcha = (token: string | null): void => {
-        setCaptchaValue(token);
-    };
+    // const onChangeRecaptcha = (token: string | null): void => {
+    //     console.log("reCAPTCHA callback triggered. Token:", token);
+    //     setCaptchaValue(token);
+    // };
 
     const onClickSignIn = (userData: UserRegistration): void => {
-        dispatch(registration({ ...userData, captcha: captchaValue }));
+        dispatch(registration({ ...userData/*, captcha: captchaValue*/ }));
         // @ts-ignore
-        window.grecaptcha.reset();
+        // window.grecaptcha.reset();
     };
 
     return (
@@ -56,7 +58,7 @@ const Registration: FC = (): ReactElement => {
                             titleSpan={8}
                             wrapperSpan={16}
                             name={"email"}
-                            error={errors.emailError}
+                            error={errors?.emailError}
                             placeholder={"E-mail"}
                         />
                         <FormInput
@@ -65,7 +67,7 @@ const Registration: FC = (): ReactElement => {
                             titleSpan={8}
                             wrapperSpan={16}
                             name={"firstName"}
-                            error={errors.firstNameError}
+                            error={errors?.firstNameError}
                             placeholder={"First name"}
                         />
                         <FormInput
@@ -74,7 +76,7 @@ const Registration: FC = (): ReactElement => {
                             titleSpan={8}
                             wrapperSpan={16}
                             name={"lastName"}
-                            error={errors.lastNameError}
+                            error={errors?.lastNameError}
                             placeholder={"Last name"}
                         />
                         <FormInput
@@ -83,7 +85,7 @@ const Registration: FC = (): ReactElement => {
                             titleSpan={8}
                             wrapperSpan={16}
                             name={"password"}
-                            error={errors.passwordError}
+                            error={errors?.passwordError}
                             placeholder={"Password"}
                             inputPassword
                         />
@@ -93,21 +95,23 @@ const Registration: FC = (): ReactElement => {
                             titleSpan={8}
                             wrapperSpan={16}
                             name={"password2"}
-                            error={errors.password2Error}
+                            error={errors?.password2Error}
                             placeholder={"Confirm password"}
                             inputPassword
                         />
                         <IconButton disabled={isLoading} title={"Sign up"} icon={<UserAddOutlined />} />
-                        <Form.Item
+                        {/* <Form.Item
                             help={errors.captchaError}
                             validateStatus={errors.captchaError ? "error" : "validating"}
                             style={{ marginTop: 16 }}
                         >
                             <ReCAPTCHA
                                 onChange={onChangeRecaptcha}
-                                sitekey="6Lc5cLkZAAAAAN8mFk85HQieB9toPcWFoW0RXCNR"
+                                // sitekey="6Lc5cLkZAAAAAN8mFk85HQieB9toPcWFoW0RXCNR"
+                                sitekey="6LdOs3YqAAAAAAgogZI90NLOE6DIbAgM2d8LCAwm"
+                                //sitekey="6Lf0-1kqAAAAOXSGaw4unPHLySFe2ITx2bestKB"
                             />
-                        </Form.Item>
+                        </Form.Item> */}
                     </Form>
                 </Col>
             </Row>

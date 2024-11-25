@@ -22,7 +22,7 @@ const CartItem: FC<PropsType> = ({
 
     useEffect(() => {
         setPerfumeCount(perfumeInCart);
-    }, []);
+    }, [perfumeInCart]);
 
     const handlePerfumesCount = (value: number | null): void => {
         setPerfumeCount(value!);

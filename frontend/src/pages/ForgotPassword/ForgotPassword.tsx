@@ -25,11 +25,11 @@ const ForgotPassword: FC = (): ReactElement => {
 
     useEffect(() => {
         dispatch(setAuthLoadingState(LoadingStatus.LOADED));
-    }, []);
+    }, [dispatch]);
 
     useEffect(() => {
         form.resetFields();
-    }, [success]);
+    }, [success, form]);
 
     const onClickSend = (value: { email: string }): void => {
         dispatch(forgotPassword(value.email));
